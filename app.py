@@ -1,11 +1,11 @@
 import math
-
 import numpy as np
-from viktor.parametrization import ViktorParametrization, NumberField, ColorField, Text, GeometrySelectField, \
-    GeometryMultiSelectField, DynamicArray
+
+from viktor.parametrization import (ViktorParametrization, NumberField, ColorField, Text, GeometryMultiSelectField,
+                                    DynamicArray)
 from viktor import ViktorController, UserMessage
-from viktor.geometry import SquareBeam, Material, Color, Group, LinearPattern, Point, RectangularExtrusion, Line, \
-    BidirectionalPattern, Sphere
+from viktor.geometry import (SquareBeam, Material, Color, Group, LinearPattern, Point, RectangularExtrusion, Line,
+                             BidirectionalPattern, Sphere)
 from viktor.views import GeometryView, GeometryResult
 
 
@@ -68,6 +68,7 @@ class Controller(ViktorController):
         columns = BidirectionalPattern(c1, direction_1=[1, 0, 0], direction_2=[0, 1, 0], number_of_elements_1=2,
                                        number_of_elements_2=2, spacing_1=params.width, spacing_2=params.length)
 
+        # Pattern to create complete building
         floor = Group([columns, beams])
         building = LinearPattern(floor, direction=[0, 0, 1], number_of_elements=params.number_floors, spacing=floor_height)
 
